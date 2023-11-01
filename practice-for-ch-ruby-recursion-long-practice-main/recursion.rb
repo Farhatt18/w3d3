@@ -82,4 +82,27 @@ def deep_dup(nested_arr) #[1, [2], [3, [4]]]
 end
 # p deep_dup([1, [2], [3, [4]]]) => [1, [2], [3, [4]]]
 
+# # iterative method : fib
+
+def fib(n) #3
+   
+    result = [0,1]
+     i = result.length
+    while i < n # 2 < 3
+        next_num = result[-2] + result[-1]
+        result << next_num
+        i += 1
+    end 
+    result
+end
+
+#recursively
+def fib(n)
+    return [0,1].take(n) if n <= 2
+    prev_arr = fib(n-1)
+    prev_arr << prev_arr[-2] + prev_arr[-1]
+end
+ 
+#fib(3) -> [0,1,1]
+
 
