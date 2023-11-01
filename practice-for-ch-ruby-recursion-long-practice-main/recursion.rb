@@ -1,14 +1,14 @@
 #iterative method 
-# def range(min, max)
-#     result = []
-#     (min...max).each do |num| 
-#         result << num   
-#     end
-#     if max <= min 
-#         return []
-#     end
-#     return result 
-# end
+def range(min, max)
+    result = []
+    (min...max).each do |num| 
+        result << num   
+    end
+    if max <= min 
+        return []
+    end
+    return result 
+end
 
 # p range(1,5)
 # p range(3,2)
@@ -32,11 +32,54 @@ def range(min,max) # (1,3)
     range(min,max-1)  << max - min #(1,1)
 end
 
-# def range(min,max)# (1,2)
-#     return [] if max <= min 
-#     return [1] if max == 2
+# --------------------------------------------
+
+#version 1: exponent
+
+def expo(b, n)
+    return 1 if n == 0
+    return b if n == 1
+    b * expo(b, n - 1)
+end 
+# p expo(1, 0) #-> 1
+# p expo(1, 1) #-> 1
+# p expo(2, 2) #-> 4
+# p expo(2, 3) #-> 8
+
+# version 2: exponent
+
+def expo(b, n)
+    return 1 if n == 0 
+    return b if n == 1
+    even_expo = expo(b, n / 2) ** 2  
+    odd_expo = b * (expo(b, (n - 1) / 2) ** 2)
+    return even_expo if n.even?
+    return odd_expo if n.odd?
+end 
+# p expo(0, 0) #-> 0^0 -> 0
+# p expo(0, 1) #-> 0^1 -> 0
+# p expo(1, 0) #-> 1^2 -> 1
+# p expo(1, 1) #-> 1^1 -> 1
+# p expo(1, 2) #-> 1^2 -> 1
+# p expo(2, 0) #-> 2^0 -> 1
+# p expo(2, 1) #-> 2^1 -> 2
+# p expo(2, 2) #-> 2^2 -> 4
+
+#Deep dup
+
+def deep_dup(nested_arr) #[1, [2], [3, [4]]]
+    result_copy = []
+
+    nested_arr.each do |ele| #ele = ele or [ele1, ele2]
+        if ele.is_a?(Array)
+            result_copy << deep_dup(ele) 
+        else
+            result_copy << ele
+        end
+    end
+
+    result_copy
+end
+# p deep_dup([1, [2], [3, [4]]]) => [1, [2], [3, [4]]]
 
 
-#     [1]
-#    range(min,max-1) << memo(min,max - 1) #(1,1)
-# end
