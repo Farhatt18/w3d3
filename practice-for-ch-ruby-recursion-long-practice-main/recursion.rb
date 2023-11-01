@@ -105,4 +105,36 @@ end
  
 #fib(3) -> [0,1,1]
 
+#binary search
+# def bsearch(arr, target)
+#     return nil if target == 0 || !arr.include?(target)
+    
+#     mid_idx = arr.length / 2 
+#     if arr[mid_idx] == target
+#         return mid_idx
+#     elsif arr[mid_idx] > target
+#         return bsearch(arr[0...mid_idx], target)
+#     else
+#         return bsearch(arr[mid_idx + 1..-1], target)
+#     end 
+    
+# end
+def bsearch(arr)
 
+
+
+
+
+p bsearch([1, 2, 3], 1) # => 0
+p bsearch([2, 3, 4, 5], 3) # => 1
+p bsearch([2, 4, 6, 8, 10], 6) # => 2
+p bsearch([1, 3, 4, 5, 9], 5) # => 3
+p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+# [1,2,3]
+#target = 1
+#mid_el = 2
+#target < mid_el
+#[1] 
+#0
